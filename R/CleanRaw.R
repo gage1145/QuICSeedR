@@ -25,11 +25,9 @@
 #' @export
 CleanRaw = function (meta, raw, plate_time, cycle_total) 
 {
-  if (missing(cycle_total) || is.null(cycle_total) || length(cycle_total) == 
-      0) {
+  if (missing(cycle_total) || is.null(cycle_total) || length(cycle_total) == 0) {
     cycle_total = nrow(raw) - 1
-  }
-  else {
+  } else {
     cycle_total <- cycle_total
   }
   raw = raw[-1, -c(1:2)]
