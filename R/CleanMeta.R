@@ -19,15 +19,19 @@
 #' }
 #'
 #' @export
-CleanMeta <- function (raw, plate, replicate, split_content = FALSE, split_by = "_", split_into = c(),
+CleanMeta <- function (plate, replicate, split_content = FALSE, split_by = "_", split_into = c(),
                        del_na = TRUE) {
   
   if (split_content && length(split_into) == 0) {
     stop("If split_content is TRUE, split_into must be provided and cannot be empty.")
   }
   
-  n_platecol <- ifelse(ncol(plate) == 13, 13, 25)
-  plate_format <- ifelse(n_platecol == 13, 96, 384)
+  if (ncol(plate) %in% c(13, 25)) {
+    n_platecol <- ifelse(ncol(plate) == 13, 13, 25)
+    plate_format <- ifelse(n_platecol == 13, 96, 384)
+  } else {
+    stop("Plate argument shouled have either 13 or 25 columns for 96- and 384-well plates, respectively.")
+  }
   
   replicate <- replicate[, -1]
   replicate <- c(t(replicate))
