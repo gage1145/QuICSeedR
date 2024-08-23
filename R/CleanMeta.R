@@ -1,9 +1,8 @@
 #' Get Clean Metadata
 #'
-#' This function processes raw data (raw), plate layout (plate), and replicate information (replicate) to create a clean metadata dataframe.
+#' This function processes plate layout (plate), and replicate information (replicate) to create a clean metadata dataframe.
 #' It can optionally split the content column into additional columns.
 #'
-#' @param raw A dataframe containing the raw data.
 #' @param plate A dataframe containing the plate layout information.
 #' @param replicate A dataframe containing the replicate information. Output of `GetReplicate()`.
 #' @param split_content Logical, whether to split the content. Default is FALSE.
